@@ -13,6 +13,7 @@ class App extends React.Component
     <div>
     Hello
   <MyComponent></MyComponent>
+ 
 
   </div>
 
