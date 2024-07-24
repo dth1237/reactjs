@@ -6,17 +6,22 @@ import Userinfor from "./Userinfor";
 import Displayinfor from "./Displayinfor";
 class MyComponent extends React.Component {
 
+    state ={
+        listUser : [
+            { id: 1 ,name:'nnd' ,age :  '16'},
+             { id: 2, name: 'd', age: '26' },
+              { id: 3, name: 'nd', age: '21' }
+        ]
+    }
     //JSX
     render() {
-        const myinfor=['a', 'b' ,'c']
+
         return (
             <div>
 
               <Userinfor></Userinfor>
               <br></br>
-              <Displayinfor name='nnd' age =  '26' />
-              <hr></hr>
-                <Displayinfor name='d' age='16' myinfor={myinfor} />
+              <Displayinfor listUser={this.state.listUser} />
 
 
             </div>
