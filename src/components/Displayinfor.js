@@ -1,5 +1,5 @@
 import React from "react";
-
+import './Displayinfor.scss'
 class Displayinfor extends React.Component
 {
 //prop
@@ -17,7 +17,7 @@ class Displayinfor extends React.Component
     render(){
        const{listUser} = this.props;
         return (
-            <div>
+            <div className="Display-infor-container">
                 <div>
                     <span onClick={()=>{this.handlshowhide()}}> 
                        
@@ -35,6 +35,9 @@ class Displayinfor extends React.Component
                         <div key={user.id} className = {+user.age > 18 ? 'green' : 'red'}>
                            <div> My name is {user.name}</div>
                             <div> My age is {user.age}</div>
+                            <div> 
+                                <button onClick={() => this.props.handledeleteuser(user.id)}>Delete</button>
+                            </div>
 
                     </div>
                     )

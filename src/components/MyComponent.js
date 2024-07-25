@@ -19,6 +19,18 @@ class MyComponent extends React.Component {
             listUser: [...this.state.listUser,userobj]
         })
      }
+     handledeleteuser = (userid)=>
+     {
+       let listUserfilter = this.state.listUser;
+
+       listUserfilter = listUserfilter.filter(item => item.id !== userid)
+       this.setState({
+        listUser : listUserfilter
+       })
+
+
+
+     }
     //JSX
     render() {
 
@@ -28,7 +40,7 @@ class MyComponent extends React.Component {
                 <Adduser handleaddnewuser={this.handleaddnewuser}></Adduser>
               <br></br>
               <Displayinfor listUser={this.state.listUser} 
-                          />
+                            handledeleteuser = {this.handledeleteuser} />
 
 
             </div>
