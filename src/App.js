@@ -1,5 +1,6 @@
 
 import './App.scss';
+import Header from './Components/Header/Header';
 
 
 
@@ -10,7 +11,7 @@ const App = () => {
   return (
 
     <div className="app-container">
-      hello world
+      <Header/>
     </div>
   );
 }
