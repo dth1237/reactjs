@@ -1,63 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 
-class Adduser extends React.Component
-{
-    state = {
-        name: `d`,
-        age: `20`
+// class Adduser extends React.Component
+// {
+//     state = {
+//         name: `d`,
+//         age: `20`
+const Adduser = (props) => {
+    const [name, setName] = useState('');
+    const [age, setAge] = useState('');
+   
 
-    };
-    handelClick = (event) => {
-        console.log("Click me my button ")
-        console.log("random", Math.floor((Math.random() * 100) + 1));
 
 
-        this.setState({
-            name: 'dung',
-            age: Math.floor((Math.random() * 100) + 1)
-        })
+
+   const handleonchangename = (event) => {
+        setName(event.target.value)
 
     }
-    HandleonMouseover = (event) => {
-        // console.log(event.pageX)
+    const handleonchangeage = (event) => {
+        setAge(event.target.value)
     }
-    handleonchangename = (event) => {
-        this.setState({
-            name: event.target.value
-        })
-    }
-    handleonchangeage = (event) => {
-        this.setState({
-            age: event.target.value
-        })
-    }
-    handleonsubmit = (event) => {
+
+
+
+
+
+    const handleonsubmit = (event) => {
         event.preventDefault();
-        this.props.handleaddnewuser(
+        props.handleaddnewuser(
             {
                 id: Math.floor((Math.random() * 10) + 1) + '-random',
 
-                 name : this.state.name,
-                 age: this.state.age
+                name: this.state.name,
+                age: this.state.age
             }
         );
     }
 
-    render(){
-    return(
-          
-        <div>
-            My name is the {this.state.name} and I'm {this.state.age}
 
-            <form onSubmit={(event) => this.handleonsubmit(event)}>
+    return (
+
+        <div>
+            My name is the {name} and I'm {age}
+
+            <form onSubmit={(event) => handleonsubmit(event)}>
                 <input type="text"
-                    value={this.state.name}
-                    onChange={(event) => this.handleonchangename(event)}
+                    value={name}
+                    onChange={(event) => handleonchangename(event)}
 
                 />
                 <input type="text"
-                    value={this.state.age}
-                    onChange={(event) => this.handleonchangeage(event)}
+                    value={age}
+                    onChange={(event) => handleonchangeage(event)}
 
                 />
 
@@ -67,10 +61,78 @@ class Adduser extends React.Component
 
 
     )
-    }
-
-
-   
-
 }
+
+
+
+
+
+
+//     };
+//     handelClick = (event) => {
+//         console.log("Click me my button ")
+//         console.log("random", Math.floor((Math.random() * 100) + 1));
+
+
+//         this.setState({
+//             name: 'dung',
+//             age: Math.floor((Math.random() * 100) + 1)
+//         })
+
+//     }
+//     HandleonMouseover = (event) => {
+//         // console.log(event.pageX)
+//     }
+//     handleonchangename = (event) => {
+//         this.setState({
+//             name: event.target.value
+//         })
+//     }
+//     handleonchangeage = (event) => {
+//         this.setState({
+//             age: event.target.value
+//         })
+//     }
+//     handleonsubmit = (event) => {
+//         event.preventDefault();
+//         this.props.handleaddnewuser(
+//             {
+//                 id: Math.floor((Math.random() * 10) + 1) + '-random',
+
+//                  name : this.state.name,
+//                  age: this.state.age
+//             }
+//         );
+//     }
+
+//     render(){
+//     return(
+
+//         <div>
+//             My name is the {this.state.name} and I'm {this.state.age}
+
+//             <form onSubmit={(event) => this.handleonsubmit(event)}>
+//                 <input type="text"
+//                     value={this.state.name}
+//                     onChange={(event) => this.handleonchangename(event)}
+
+//                 />
+//                 <input type="text"
+//                     value={this.state.age}
+//                     onChange={(event) => this.handleonchangeage(event)}
+
+//                 />
+
+//                 <button>submit</button>
+//             </form>
+//         </div>
+
+
+//     )
+//     }
+
+
+
+
+// }
 export default Adduser;
