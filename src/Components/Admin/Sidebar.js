@@ -14,6 +14,9 @@ import sidebarBg from '../../assets/bg2.jpg';
 import { DiReact } from "react-icons/di";
 import { MdDashboard } from "react-icons/md";
 import '../Admin/Sidebar.scss'
+import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+
 
 
 
@@ -52,15 +55,19 @@ const Sidebar = (props) => {
                             icon={<FaTachometerAlt />}
                         >
                             Dashboard
+                            <Link to={'/admins'}></Link>
                         </MenuItem>
                     </Menu>
                     <Menu iconShape="circle">
                         <SubMenu
-                      
+
                             icon={<FaGem></FaGem>}
                             title={'Features'}
                         >
-                            <MenuItem> Quản lý Users</MenuItem>
+                            <MenuItem> Quản lý Users
+                                <Link to='/admins/manage-user'></Link>
+
+                            </MenuItem>
                             <MenuItem> Quản lý bài quizz</MenuItem>
                             <MenuItem> Quản lý câu hỏi</MenuItem>
                         </SubMenu>
@@ -89,7 +96,7 @@ const Sidebar = (props) => {
                 </SidebarFooter>
             </ProSidebar>
         </>
-       
+
     )
 }
 
