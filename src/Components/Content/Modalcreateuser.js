@@ -13,13 +13,14 @@ const Modalcreateuser =() => {
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
+                Launch demo modal 
             </Button>
 
             <Modal show={show} 
             onHide={handleClose}
              size='xl'
-             backdrop = 'static'>
+             backdrop = 'static'
+             className='modal-add-user'>
                 <Modal.Header closeButton>
                     <Modal.Title>Add new user</Modal.Title>
                 </Modal.Header>
@@ -45,9 +46,13 @@ const Modalcreateuser =() => {
                         </select>
                     </div>
                     <div className='col-md-12'>
-                        <label className="form-label">Image</label>
+                        <label className="form-label">Up laod file Image</label>
 
-                        <input type='file' />
+                        <input type='file' hidden />
+
+                    </div>
+                    <div className='code-md-12 img-review'>
+                        <span>Preview Image</span>
 
                     </div>
 

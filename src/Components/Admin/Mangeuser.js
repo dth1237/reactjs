@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Modalcreateuser from '../Content/Modalcreateuser';
-
+import './Mangaeuser.scss'
 
 
 
@@ -12,14 +12,15 @@ const Manageuser = (props) => {
             <div className="title">
                 Manage User
             </div>
-            <div className="user-contennt">
+            <div className="user-content">
                 <button>add new user</button>
 
             </div>
             <div>
                 table user
-                <Modalcreateuser />
             </div>
+            <Modalcreateuser />
+
 
         </div>
     )
