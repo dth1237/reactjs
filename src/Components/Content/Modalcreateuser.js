@@ -4,11 +4,21 @@ import Modal from 'react-bootstrap/Modal';
 
 import { ModalHeader } from "react-bootstrap";
 import { FcPlus } from 'react-icons/fc'
-const Modalcreateuser = () => {
-    const [show, setShow] = useState(false);
+import { toast } from 'react-toastify';
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+import { postcreatuser } from '../Services/apiService'
+const Modalcreateuser = (props) => {
+    const { show, setShow } = props;
+    const handleClose = () => {
+        setShow(false)
+        setemail('')
+        setpassword('')
+        setrole('USER')
+        setimage('')
+        setpreviewimage('')
+
+
+    };
     const [email, setemail] = useState("");
     const [password, setpassword] = useState("");
     const [username, setusername] = useState("");
@@ -26,12 +36,42 @@ const Modalcreateuser = () => {
         }
 
     }
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
+    const handlesubmid = async () => {
+        const isinavalidemail = validateEmail(email)
+        if (!isinavalidemail) {
+            toast.error('Invalid email')
+            return;
+        }
+        if (!password) {
+            toast.error('Invalid password')
+            return;
+        }
+        let res = await postcreatuser(email, password, username, role, image);
+        if (res.data && res.data.EC === 0) {
+            toast.success(res.data.EM);
+            handleClose();
+        }
+        if (res.data && res.data.EC !== 0) {
+            toast.error(res.data.EM);
+
+        }
+
+
+
+    }
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            {/* <Button variant="primary" onClick={handleShow}>
                 Launch demo modal
-            </Button>
+            </Button> */}
 
             <Modal show={show}
                 onHide={handleClose}
@@ -96,7 +136,7 @@ const Modalcreateuser = () => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={() => handlesubmid()}>
                         Save Changes
                     </Button>
                 </Modal.Footer>
