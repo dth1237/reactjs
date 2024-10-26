@@ -16,8 +16,6 @@ const Modalcreateuser = (props) => {
         setrole('USER')
         setimage('')
         setpreviewimage('')
-
-
     };
     const [email, setemail] = useState("");
     const [password, setpassword] = useState("");
@@ -53,13 +51,14 @@ const Modalcreateuser = (props) => {
             toast.error('Invalid password')
             return;
         }
-        let res = await postcreatuser(email, password, username, role, image);
-        if (res.data && res.data.EC === 0) {
-            toast.success(res.data.EM);
+        let data = await postcreatuser(email, password, username, role, image);
+        console.log('component res', data )
+        if (data && data.EC === 0) {
+            toast.success(data.EM);
             handleClose();
         }
-        if (res.data && res.data.EC !== 0) {
-            toast.error(res.data.EM);
+        if (data && data.EC !== 0) {
+            toast.error(data.EM);
 
         }
 
